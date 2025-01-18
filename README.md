@@ -9,7 +9,7 @@ Amiboot's goal differs in that it is mainly focussed on providing a base (emulat
 Amiboot was inspired by the rEFInd boot manager, and my own obsession with putting an Amiga on everything.
 
 
-## FEATURES ##
+## Features ##
 
 - Boots Linux directly into emulation without an X Windows environment.
 - Integration with the rEFInd boot manager on UEFI systems allows selection of virtual Amiga BEFORE boot.
@@ -20,7 +20,7 @@ Amiboot was inspired by the rEFInd boot manager, and my own obsession with putti
 - Based on Debian 12 and the excellent Amiberry emulator.
 
 
-## INSTALLATION ##
+## Installation ##
 
 1. Install a minimal Debian 12 x86_64 system
     - Installing in UEFI mode is highly recommended to make use of rEFInd boot manager integration.
@@ -44,18 +44,32 @@ Amiboot was inspired by the rEFInd boot manager, and my own obsession with putti
     - Hit F12 to open the Amiberry GUI, go to Paths and select Rescan Paths to include the new ROMs in Amiberry.
 
 
-## Amiberry configuration ##
+## Amiberry Configuration ##
 
 Amiboot looks for pre-launch instructions in the Description field of the selected Amiberry configuration as follows:
 
-HDD=DIR             - Mount and add attached non-system block device partitions as directories (equivalent to the "Add Directory" option in UAE).
-HDD=NATIVE          - Add attached (unmounted) block devices as native drives (equivalent to the "Add Hard Drive" option in UAE).
-HDD=AUTO            - Add mountable non-system block device partitions as directories, and any non-mountable drives (eg. Amiga native or blank) as native drives.
-GW=A0               - Add Greaseweazle as DF0: if detected. Greaseweazle has floppy connected on cable in 'A' postiion (after twist). Drive number can be 0, 1, 2 or 3.
-GW=B0               - Add Greaseweazle as DF0: if detected. Greaseweazle has floppy connected on cable in 'B' postiion (no twist). Drive number can be 0, 1, 2 or 3.
-BOOTICON=file.png   - Include this configuration in the system boot menu using icon "file.png". Valid icon files are stored in /boot/efi/EFI/refind/amiboot/icons/.
+# HDD=DIR #
+Mount and add attached non-system block device partitions as directories (equivalent to the "Add Directory" option in UAE).
 
-Included icons are:
+# HDD=NATIVE #
+Add attached (unmounted) block devices as native drives (equivalent to the "Add Hard Drive" option in UAE).
+
+# HDD=AUTO #
+Add mountable non-system block device partitions as directories, and any non-mountable drives (eg. Amiga native or blank) as native drives.
+
+# GW=A0 #
+Add Greaseweazle as DF0: if detected. Greaseweazle has floppy connected on cable in 'A' postiion (after twist). Drive number can be 0, 1, 2 or 3.
+
+# GW=B0 #
+Add Greaseweazle as DF0: if detected. Greaseweazle has floppy connected on cable in 'B' postiion (no twist). Drive number can be 0, 1, 2 or 3.
+
+# BOOTICON=file.png #
+Include this configuration in the system boot menu using icon "file.png". Valid icon files are stored in /boot/efi/EFI/refind/amiboot/icons/.
+
+
+## Boot Icons ##
+
+The following icons are included under /boot/efi/EFI/refind/amiboot/icons
 
 os_amiga_lefty.png
 os_amiga_checkmark.png
