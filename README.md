@@ -1,4 +1,4 @@
-## Amiboot README ##
+# Amiboot README #
 
 The goal of Amiboot is to turn a PC into an Amiga, as simply and completely as practicable.
 
@@ -48,22 +48,22 @@ Amiboot was inspired by the rEFInd boot manager, and my own obsession with putti
 
 Amiboot looks for pre-launch instructions in the Description field of the selected Amiberry configuration as follows:
 
-# HDD=DIR #
+### HDD=DIR ###
 Mount and add attached non-system block device partitions as directories (equivalent to the "Add Directory" option in UAE).
 
-# HDD=NATIVE #
+### HDD=NATIVE ###
 Add attached (unmounted) block devices as native drives (equivalent to the "Add Hard Drive" option in UAE).
 
-# HDD=AUTO #
+### HDD=AUTO ###
 Add mountable non-system block device partitions as directories, and any non-mountable drives (eg. Amiga native or blank) as native drives.
 
-# GW=A0 #
+### GW=A0 ###
 Add Greaseweazle as DF0: if detected. Greaseweazle has floppy connected on cable in 'A' postiion (after twist). Drive number can be 0, 1, 2 or 3.
 
-# GW=B0 #
+### GW=B0 ###
 Add Greaseweazle as DF0: if detected. Greaseweazle has floppy connected on cable in 'B' postiion (no twist). Drive number can be 0, 1, 2 or 3.
 
-# BOOTICON=file.png #
+### BOOTICON=file.png ###
 Include this configuration in the system boot menu using icon "file.png". Valid icon files are stored in /boot/efi/EFI/refind/amiboot/icons/.
 
 
