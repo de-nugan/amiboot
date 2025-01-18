@@ -16,17 +16,19 @@ Amiboot was inspired by the rEFInd boot manager, Rob Smith's amazing FloppyBridg
 - Detects Greaseweazle floppy drives before starting emulation.
 - Detects hard drives (both directories and native devices) before starting emulation.
 - Integrates the rEFInd boot manager on UEFI systems to provide an Amiga boot selector.
-- Includes a basic AROS system with Directory Opus for importing ROMs, ADFs, HDFs etc. from removable storage.
+- Includes a basic AROS system with Directory Opus for importing ROMs, ADFs, HDFs etc. from removable storage "The Amiga Way".
 - Based on Debian 12 and the excellent Amiberry emulator.
 
 
 ## Installation ##
 
-1. Install a minimal Debian 12 x86_64 system
+1. Install a minimal Debian 12 x86_64 (amd64) system
+    - Use the netboot installer.
     - Installing in UEFI mode is highly recommended to make use of rEFInd boot manager integration.
-    - Include a root partition of at least 4 GB (bare minimal installation is already 1.8 GB), or just use Guided Partitioning (Use entire disk)
-    - Optional: Add a third /Amiga partition to store the amiboot system files. Using a FAT filesystem is recommended if installing to removable media to allow easy file management from any PC.
+    - Include a root partition of at least 4 GB (bare minimal installation is already 1.8 GB), or just use Guided Partitioning => "Use entire disk"
+    - Optional: Add a third /Amiga partition to store the amiboot system files. exFAT filesystem is recommended if installing to removable media to allow easy file management from any PC.
     - At the package selection screen select Debian System Utilities only. ** Do not install an X Windows environment! **
+    - Please see Debian Linux documentation if required.
 2. Boot and login as root
 3. Download the Amiboot self-extracting installer, eg. with wget (check latest release for current download URL):
     - wget https://github.com/de-nugan/amiboot/releases/download/v0.2.0/amiboot-debian12-amd64.zip
@@ -34,7 +36,7 @@ Amiboot was inspired by the rEFInd boot manager, Rob Smith's amazing FloppyBridg
     - chmod +x amiboot-debian12-amd64.zip
     - ./amiboot-debian12-amd64.zip
 5. Once complete, reboot:
-    - shutdown -r now
+    - shutdown -r now (or hit the power button)
 6. On UEFI systems you should be greeted with the rEFInd boot selector with the following boot options:
     - Linux kernels. These can be hidden by selecting and hitting the delete key.
     - Included UAE configurations. Only AROS will boot unless Amiga ROMs are also imported (Amiga system ROMs are not included with Amiboot).
