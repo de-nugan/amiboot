@@ -23,7 +23,6 @@ Amiboot was inspired by the rEFInd boot manager, Rob Smith's amazing FloppyBridg
 ## Installation ##
 
 1. Install a minimal Debian 12 x86_64 (amd64) system
-    - Use the netboot installer.
     - Installing in UEFI mode is highly recommended to make use of rEFInd boot manager integration.
     - Include a root partition of at least 4 GB (bare minimal installation is already 1.8 GB), or just use Guided Partitioning => "Use entire disk"
     - Optional: Add a third /Amiga partition to store the amiboot system files. exFAT filesystem is recommended if installing to removable media to allow easy file management from any PC.
