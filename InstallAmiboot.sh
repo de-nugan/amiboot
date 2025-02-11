@@ -24,6 +24,22 @@ else
 fi
 
 
+case $(uname -m) in
+    x86_64)
+    arch=amd64
+    ;;
+
+    aarch64)
+    arch=arm64
+    ;;
+
+    *)
+    echo "This architecture is not supported."
+    exit
+    ;;
+esac
+
+
 install_package ()
 {
     echo "Installing ${1}.."
@@ -31,7 +47,7 @@ install_package ()
 
     if [[ $release ]]; then
 
-        apt-get --assume-yes -qq --show-progress install $1
+        apt-get --assume-yes -qq install $1
 
     fi
 }
@@ -64,6 +80,7 @@ if [[ ! $(grep -E "^deb .* contrib" /etc/apt/sources.list) ]]; then
 fi
 
 # Install prereqs
+install_package wget  # Not included in Debian aarch64
 install_package plymouth
 install_package unzip
 install_package curl
@@ -73,6 +90,7 @@ install_package libegl1  # required?
 install_package libgegl-common
 # install_package libgegl-0.4-0
 install_package $(apt-cache pkgnames libgegl-0)
+
 
 # Create application folders and install files
 mkdir -p "${base_path}/Volumes"
@@ -121,7 +139,7 @@ if [[ $release ]]; then
 
         cp -R "${install_files_path}/boot" /
 
-    else
+    elif [[ $arch == "amd64" ]]; then
 
         # Otherwise create an initial default config
         write_log install "EFI path not found. Setting GRUB and launcher defaults.."
@@ -155,27 +173,27 @@ fi
 if [[ ! $(which amiberry) ]]; then
 
     pushd "${install_files_path}"
-    amiberry_installer=$(ls -vr ./amiberry*amd64.deb | head -1)
+    amiberry_installer=$(ls -vr ./amiberry*${arch}.deb | head -1)
 
     if [[ ! -f $amiberry_installer ]]; then
 
-        amiberry_zipfile=$(ls -vr ./amiberry*amd64.zip | head -1)
+        amiberry_zipfile=$(ls -vr ./amiberry*${arch}.zip | head -1)
 
         if [[ ! -f $amiberry_zipfile ]]; then
 
-            wget_url=$(curl -s https://api.github.com/repos/BlitterStudio/Amiberry/releases/latest | grep browser_download_url.*debian-bookworm-amd64 | cut -d : -f 2,3 | tr -d " \"")
+            wget_url=$(curl -s https://api.github.com/repos/BlitterStudio/Amiberry/releases/latest | grep browser_download_url.*debian-bookworm-${arch} | cut -d : -f 2,3 | tr -d " \"")
             echo "Fetching Amiberry installer from ${wget_url}"
             write_log install "Fetching Amiberry installer from ${wget_url}"
 
             wget "${wget_url}"
 
-            amiberry_zipfile=$(ls -vr ./amiberry*amd64.zip | head -1)
+            amiberry_zipfile=$(ls -vr ./amiberry*${arch}.zip | head -1)
 
         fi
 
         if [[ -f $amiberry_zipfile ]]; then
 
-            unzip -o ./amiberry*amd64.zip
+            unzip -o ./amiberry*${arch}.zip
 
         else
 
@@ -185,7 +203,7 @@ if [[ ! $(which amiberry) ]]; then
 
         fi
 
-        amiberry_installer=$(ls -vr ./amiberry*amd64.deb | head -1)
+        amiberry_installer=$(ls -vr ./amiberry*${arch}.deb | head -1)
 
     fi
 
