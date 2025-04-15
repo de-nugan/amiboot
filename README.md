@@ -30,7 +30,7 @@ Amiboot was inspired by the rEFInd boot manager, Rob Smith's amazing FloppyBridg
     - Please see Debian Linux documentation if required.
 2. Boot and login as root
 3. Download the Amiboot self-extracting installer, eg. with wget (check latest release for current download URL):
-    - wget https://github.com/de-nugan/amiboot/releases/download/v0.2.0/amiboot-debian12-amd64.zip
+    - wget https://github.com/de-nugan/amiboot/releases/download/v0.2.1/amiboot-debian12-amd64.zip
 4. Run the installer (this will take a few minutes and produce a lot of messages):
     - chmod +x amiboot-debian12-amd64.zip
     - ./amiboot-debian12-amd64.zip
