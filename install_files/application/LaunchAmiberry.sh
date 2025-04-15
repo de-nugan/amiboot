@@ -70,8 +70,10 @@ preprocess_config_file()
 
                 if [[ ${GWCablePos} == 'B' ]]; then
                     echo "amiberry.drawbridge_connected_drive_b=true" >> ${1}
+                    echo "amiberry.drawbridge_drive_cable=1" >> ${1}
                 else
                     echo "amiberry.drawbridge_connected_drive_b=false" >> ${1}
+                    echo "amiberry.drawbridge_drive_cable=0" >> ${1}
                 fi
 
                 echo "floppy${GWAmigaDriveNo}type=8" >> ${1}
